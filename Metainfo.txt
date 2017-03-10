@@ -1,0 +1,11 @@
+Name of Quantlet:  'Democracy and Income'
+Published in:      'Income and Democracy'
+Description:       'Plot average of Freedom House democracy index and log GDP per capita in 1990s' 
+Keywords:          'democracy, income per capita, plot'
+See also:          
+Author:            'Hyerin Park, Sharong Jiang, Soichi Kajisa'
+Submitted:         'Fri, March 10 2017 by Soichi Kajisa'
+Datafile:          'ave1990s.xlsx, change_FH.xlsx, change_polity4.xlsx, X5yr_panel.xlsx'
+Input:  
+Output:  
+Example:  
