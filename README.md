@@ -18,7 +18,10 @@ Example:
 
 ```
 
-![Picture1](f1_fixed.png)
+![Picture1](f1notitle.pdf)
+![Picture2](f2notitle.pdf)
+![Picture3](f3notitle.pdf)
+![Picture4](f4notitle.pdf)
 
 ### R Code:
 ```r
