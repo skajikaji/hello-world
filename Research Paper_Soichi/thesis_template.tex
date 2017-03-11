@@ -1,0 +1,377 @@
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm}    % Typical maths resource packages
+\usepackage{graphicx}                           % Packages to allow inclusion of graphics
+\usepackage{hyperref}                           % For creating hyperlinks in cross references
+\usepackage[authoryear]{natbib}                 % literature reference style
+\usepackage[bf]{caption2}
+%for table
+\usepackage{adjustbox}
+\usepackage{graphicx} 
+\usepackage[flushleft]{threeparttable}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{input-symbols = ()}
+% For code listing
+\usepackage{listings}
+\lstset{language=R, 	basicstyle=\footnotesize,numbers=left,stepnumber=1,	showstringspaces=false,tabsize=1,breaklines=true,	breakatwhitespace=false,
+}
+
+%\renewcommand\thesection{\Roman{section}}
+%\renewcommand\thesubsection{\Alph{subsection}}
+
+
+
+% -------------------------------
+% --- some layout definitions ---
+% -------------------------------
+
+% define topline
+\usepackage[automark]{scrpage2}
+\pagestyle{scrheadings}
+\automark{section}
+\clearscrheadings
+\ohead{\headmark}
+
+% define citation style
+\bibliographystyle{ecta}
+
+% define page size, margin size
+\setlength{\headheight}{1.1\baselineskip}
+\voffset=-2cm
+\hoffset=-3cm
+\textheight24cm
+\textwidth15.5cm
+\topmargin1cm
+\oddsidemargin3cm
+\evensidemargin3cm
+
+% define line line spacing = 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% define second level for `itemizing'
+\renewcommand{\labelitemii}{-}
+
+
+
+
+% --------------------------------------
+% --------------------------------------
+% --------------------------------------
+% --- the structure the tex document ---
+% ---  (this our recommendation) -------
+% frontmatter:
+%   - titlepage (mandatory),
+%   - acknowledgement,
+%   - abstract,
+%   - table of contents (mandatory),
+%   - list of abbreviations (not mandatory),
+%   - list of figures (not mandatory),
+%   - list of tables  (not mandatory) .
+%
+% body of the thesis (the structure of the thesis body is not mandatory, but the list of literature is mandatory):
+%   - introduction,
+%   - methods,
+%   - data,
+%   - results,
+%   - conclusion,
+%   - literature (mandatory),
+%   - appendix (figures, tables).
+%
+% last page:
+%   - declaration of authorship (mandatory).
+% --------------------------------------
+% --------------------------------------
+% --------------------------------------
+
+\begin{document}
+
+% -------------------------------
+% --- frontmatter: Title page ---
+% -------------------------------
+
+\thispagestyle{empty}
+\input{titlepage}
+
+
+
+% ------------------------------------
+% --- frontmatter: Acknowledgement ---
+% ------------------------------------
+%\newpage
+%\pagestyle{plain}
+%\pagenumbering{roman}   % define page number in roman style
+%\setcounter{page}{1}    % start page numbering
+%\input{acknowledgement}
+
+
+
+% -----------------------------
+% --- frontmatter: Abstract ---
+% -----------------------------
+\newpage
+\input{abstract}
+
+
+
+% -----------------------------
+% --- frontmatter: Contents ---
+% -----------------------------
+\newpage
+\tableofcontents
+\clearpage
+
+
+% ----------------------------------------------------
+% --- frontmatter: List of Figures (not mandatory) ---
+% ----------------------------------------------------
+\newpage
+\addcontentsline{toc}{section}{List of Abbreviations}
+\ohead[]{LIST OF ABBREVIATIONS}
+\input{abbreviations}
+
+
+
+% ----------------------------------------------------
+% --- frontmatter: List of Figures (not mandatory) ---
+% ----------------------------------------------------
+\newpage
+\addcontentsline{toc}{section}{List of Figures}
+\ohead[]{\rightmark}
+\listoffigures
+
+
+
+% ---------------------------------------------------
+% --- frontmatter: List of Tables (not mandatory) ---
+% ---------------------------------------------------
+\newpage
+\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+
+
+% -------------------------------
+% --- main body of the thesis ---
+% -------------------------------
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1}    % start page numbering anew
+\pagenumbering{arabic}  % page numbers in arabic style
+
+
+\input{introduction}
+\input{theory}
+\newpage
+\input{implementation}
+Figure
+\begin{itemize}
+	\item Figure.1
+\end{itemize}
+\\
+\begin{lstlisting}
+library(maptools)
+
+pointLabel(x=F1_revise$lrgdpch,y=F1_revise$fhpolrigaug,labels=F1_revise$code,col="black")
+\end{lstlisting}
+\\
+\\
+
+We handle around 150 data in a figure and if we just plot by "text" command, we cannot distinguish each label. Therefore, we introduce "maptools" package for the figure in order to fix place of each label automatically to be able to recognize each one. "pointLabel" is a command to function automatically adjustment of "maptools" package. We need same texts to call "pointLabel" command with "text" command which uses to change labels form dots to specific names. 
+\\
+\\
+
+\begin{itemize}
+	\item Figure.4
+\end{itemize}
+\\
+\\
+
+\begin{lstlisting}
+x<-1945
+for (i in 1:11) {
+x<-x+5
+plot(fhpolrigaug~lrgdpch,data=X5yr_panel, subset=year==x,
+xlim=c(6,10),ylim=c(0,1),ann=F, xaxt="n",yaxt="n")  #setting for length of graph by xlim and ylim, and erase whole title and axis by ann=F
+text(6.3,0.95,x, cex=1.5)              #label setting for each graph
+if (i %in% c (8:11) ) { axis (1 , col = " black ", col.axis= " black ", at = seq (6 , 10 , 2) ) }
+if (i %in% c(1 , 5 , 9) ) { axis (2 , col = " black ", col.axis = " black ", at = seq (0 , 1 , 0.5) ) }
+result<-lm(formula=fhpolrigaug~lrgdpch, data=X5yr_panel, subset=year==x)
+abline(result, col="blue")
+box(col = "grey60")
+}
+\end{lstlisting}
+
+\\
+
+\\
+
+Since we should make 11 figures and avoid to use same command for 11 times, we use "for" command to iterate same command for 11 times. We introduce a variable "x" in the command to refer each year data.  Variable "x" is added 5 for each repeat and through this, the command can refer same number of year data with "x" from data set. Also, we add "if" command to add tick mark to 1st, 5th, and 9th graph in vertical axis and 8th to 11th in horizontal axis. Through this command, "axis" command function in typical number of variable "i" which means number of iterate.
+
+\newpage
+\input{empirical}
+\begin{itemize}
+	\item Data description
+\end{itemize}
+
+\\
+
+\\
+
+We use the Freedom House Political Right Index as one of proxies of political right. It has researched since 1950 and now researches 209 countries and territories. It measures how countries has ideal democratic political situation and a country gets highest score, which is 1, if it has ideal political situation for democracy. Worst score is 7 and it means it is least free in terms democracy nation. For each country and territory, Freedom in the World analyzes the electoral process, political pluralism and participation, the functioning of the government, freedom of expression and of belief, associational and organizational rights, the rule of law, and personal autonomy and individual rights. Also, because Freedom House index changed the way of the estimation in 1972, we use 1972 data for 1970, and scattering pattern has been changed from before ones before and after 1965.  To enhance accuracy of our estimation, we use supplement index with the related variables from Kenneth A. Bollen (1990, 2001) for 1950 to 1965 data.
+
+
+We also introduce PolityI\hspace{-.1em}V political right index. PolityI\hspace{-.1em}V estimate the level of each country’s democracy by the competitiveness of political participation, the competitiveness of executive recruitment, the openness of executive recruitment, and the constraints on the chief executive. If the country has best democratic political situation, it is scored 10, the maximum points. Worst score means autocracy and scores 0. Since this proxy has long term data which is from 1800 to recent data, we can analyze before the World War Second through this data set. To compare both two proxies, we normalize them between 0 to 1, and o is worst situation for democracy, and 1 means best political situation for democracy. 
+
+
+GDP per capita data for post war period are from Ala Heston, Robert Summers, and Bettina Atten (2002) and GDP per capita(in contrast 1990 dollars) for the longer sample are from Maddison (2003).
+
+
+We prepare three data sets from "Income and Democracy"(2008) data set which is written by Daron Acemoglu, Simon Johnson, James A. Robinson, and Pierre Yared in American Economic Association.
+
+Table1 describe three main variables. The sample period is 1960-2000, and each observations have 5 years interval. High-income countries and low income countries in Table1 are splited by median of income data.
+
+Figure.1 plots income and Freedom House Index data of each county. We use so much samples in a graph. Thus, we set "G" groups to reduce the number of plots in the graph. Each country in same group has similar combination of log GDP per capita and Freedom House Political Right Index. G01 is Angola and Mauritania; G02 is Nigeria and Chad; G03 is Kenya and Cambodia; G04 is Algeria and Lebanon; G05 is Burkina Faso, Niger, and Yemen; G06 is Gabon and Malaysia; G07 is Dominica Republic and Slovenia; G08 is Brazil and Venezuela; G09 is Botswana, Dominica, Poland, and St. Vincent and the Grenadines; G10 is Hungry and Uruguay; G11 is Costa Rica and Grenada; G12 is Belize and St. Lucia; G13 is St. Kitts and Nevis and Trinidad and Tobago; G14 is Greece and Malta; G15 is Barbados, Cyprus, Spain , and Portugal; G16 is Finland, United Kingdom, Ireland, and New Zealand; G17 is Australia, Austria, Belgium, Canada, Germany, Denmark, France, Israel, Italia, Netherland, Norway, and Sweden; and G18 is Switzerland and USA. According to this figure, countries which has large GDP per capita tend to have good score of Freedom House Index through one of the latest data.
+
+
+Figure.2 and 3 show the outline of change of each country’s data. Vertical axis means changes from 1975 to 1995 of Freedom house index in Figure.2 and PolityI\hspace{-.1em}V in Figure3, and horizontal axis is Change in log GDP per capita. The "G" prefix corresponds to the average for groups of countries. G01 is Fiji and Kenya; G02 is Colombia and India; G03 is Iran, Jamaica, and Slovakia; G04 is Chile and Dominica Republic; G05 is Cote d’Ivoire and Rwanda; G06 is Switzerland, Costa Rica, and New Zealand; G07 is Algeria and Sweden; G08 is Australia, Denmark, Morocco, and Netherland; G09 is Belgium, Canada, France, and United Kingdom; G10 is Austria, Egypt, Iceland, Italia, Paraguay, and USA; G11 is Barbados, Norway, and Tunisia; G12 is Ireland and Syrian Arab Republic; G13 is Burundi and Tanzania; G14 is Gabon, Mexico, and Trinidad and Tobago; G15 is Peru and Senegal; G16 is Haiti and Jordan; G17 is Lesotho and Nepal; G18 is Brazil and Congo Republic; G19 is Argelia and Honduras; G20 is Benin and Mali; G21 is Greece, Malawi, and Panama; and G22 is Ecuador and Hungry.
+
+
+For Figure.3, G01 is Switzerland, Costa Rica, and New Zealand; G02 is Australia, Denmark, and Netherland; G03 is Belgium, Canada, Finland, United Kingdom, and Turkey; G04 is Austria, Colombia, IND, Iceland, Israel, Italia, and USA; G05 is Ireland and Syria; G06 is Kenya, Morocco, and Uruguay; G07 is Bolivia and Mali; G08 is Malawi and Panama; G09 is Greece and Lesotho; and G10 is Brazil and Spain. 
+
+
+Through these figures, we can say that in terms Freedom House Index, expansion of GDP per capita shows positive relation between democracy score, on the other hand in terms of PolityI\hspace{-.1em}V, it shows negative. However, plots in both figures are dispersed and degree of positive and negative relation is little.
+
+
+Figure.4 is a scatter diagram of panel data for each 5 year from 1950 to 2000. Vertical axis is Freedom House Index and horizontal axis shows income per capita. Blue line in each graph is standard regression line of freedom house index and income of each country. Independent variable is Freedom House index and dependent variable is Log GDP per capita. Each year data always shows countries which has large log GDP per capita has get good score of Freedom House Political Right Index. 
+
+
+\input{conclusion}
+
+For long years, many researches and paper have suggested that democratic political system is inevitable for economic growth. However, these days, countries which do not have democratic political regime like China and Singapore, receive attention for large economic development. Therefore, we analyze to research weather there is a relation between democracy and income. We use Freedom House Political Right Index and PolityI\hspace{-.1em}V as proxies of democracy and GDP log per capita as an income proxies. We research by using fixed effect model and two-stage least square model and we expected that there is a positive relation between them. However, contrary to our expectation, there is no significant relationship between them in our econometric model, so we could not find significant relation between income and democracy. 
+
+We analyze only post war era because data sets for Freedom House Political Right Index and PolityI\hspace{-.1em}V do not reliable and have enough data before the World War Second. But it might be causal significant relation if we research more long time series data. Also, in many articles suggest that democracy is necessary for economic growth, but there might exist a reverse causal relationship between income and democracy, for instance, income is crucial for democratic political systems.
+
+
+% ----------------
+% --- appendix ---
+% ----------------
+\appendix
+
+% literature
+\newpage
+\addcontentsline{toc}{section}{References}
+\bibliography{literature}
+
+% code (not mandatory)
+\newpage
+\input{app_code}
+F1
+\begin{lstlisting}
+library(maptools)
+
+result<-lm(fhpolrigaug~lrgdpch,data=F1_revise)
+R2=signif(summary(result)$r.squared,digit=4)
+R="R^2="
+
+plot(fhpolrigaug~lrgdpch,data=F1_revise,col="white",
+ylab="Freedom House measure of democracy",xlab="Log GDP per pacita(Penn World Tables)",
+main="Figure1.Democacy and Income , 1990s",sub=paste(R,R2))
+pointLabel(x=F1_revise$lrgdpch,y=F1_revise$fhpolrigaug,labels=F1_revise$code,col="black")
+
+abline(result)
+
+\end{lstlisting}
+
+\\
+F2
+\begin{lstlisting}
+library(maptools)
+
+result<-lm(s5fhpolrigaug~s5lrgdpch,data=F2)
+R2=signif(summary(result)$r.squared,digit=4)
+R="R^2="
+
+plot(s5fhpolrigaug~s5lrgdpch,data=F2,type="n",
+ylab="Change in Freedom House measure of democracy",xlab="Change in Log GDP per pacita(Penn World Tables)",
+main="Figure2. Change in Democracy and Income, 1970-1995")
+pointLabel(x=F2$s5lrgdpch,y=F2$s5fhpolrigaug,labels=F2$code)
+resultf2<-lm(s5fhpolrigaug~s5lrgdpch,data=F2)
+abline(resultf2)
+
+
+\end{lstlisting}
+
+\\
+F3
+\begin{lstlisting}
+library(maptools)
+
+result3<-lm(s5polity4~s5lrgdpch,data=F3)
+R2.3=signif(summary(result3)$r.squared,digit=4)
+R="R^2="
+
+plot(s5polity4~s5lrgdpch,data=F3,type="n",
+ylab="Changes in Polity of democracy",xlab="Changes in Log GDP per pacita(Penn World Tables)",
+main="Figure3. Change in Democracy and Income, 1975-1990",sub=paste(R,R2.3))
+pointLabel(x=F3$s5lrgdpch,y=F3$s5polity4,labels=F3$code)
+
+abline(result3)
+
+
+\end{lstlisting}
+
+\\
+F4
+\begin{lstlisting}
+par(mfrow = c(3,4 ))          ##par is graphic parameter, mflow is to devide the graph in 12 areas
+par(cex = 0.6)                #zoom rate for characters
+par(mar = c(0, 0, 0, 0), oma = c(4, 4, 4, 2))　　#oma is for setting vacant space
+
+x<-1945
+for (i in 1:11) {
+x<-x+5
+plot(fhpolrigaug~lrgdpch,data=X5yr_panel, subset=year==x,
+xlim=c(6,10),ylim=c(0,1),ann=F, xaxt="n",yaxt="n")  #setting for length of graph by xlim and ylim, and erase whole title and axis by ann=F
+text(6.3,0.95,x, cex=1.5)　　　　　#label setting for each graph
+if (i %in% c (8:11) ) { axis (1 , col = " black ", col.axis= " black ", at = seq (6 , 10 , 2) ) }
+if (i %in% c(1 , 5 , 9) ) { axis (2 , col = " black ", col.axis = " black ", at = seq (0 , 1 , 0.5) ) }
+result<-lm(formula=fhpolrigaug~lrgdpch, data=X5yr_panel, subset=year==x)
+abline(result, col="blue")
+box(col = "grey60")
+}
+mtext("Freedom House measure of democracy", 
+side = 2, outer = TRUE, cex = 1, line = 2.2,col = "grey20")
+mtext("Log GDP per capita(Penn World Tables)", 
+side = 1, outer = TRUE, cex = 1, line = 2.2,col = "grey20")
+mtext("Figure4: Each Five Year Data", 
+side = 3, outer = TRUE, cex = 1.3, line = 2.2,col = "grey20")
+
+\end{lstlisting}
+
+% figures (not mandatory)
+\newpage
+\input{app_figures}
+
+% tables (not mandatory)
+\newpage
+\input{app_tables}
+
+% figures (not mandatory)
+\newpage
+\input{app_figures}
+
+
+
+
+% --------------------------------------------
+% --- last page: Declaration of Authorship ---
+% --------------------------------------------
+
+%\newpage
+%\thispagestyle{empty}
+%\input{authorship}
+
+
+\end{document}

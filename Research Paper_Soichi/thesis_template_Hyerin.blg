@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/W32TeX)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis_template_Hyerin.aux
+The style file: ecta.bst
+Database file #1: literature.bib
+You've used 2 entries,
+            2849 wiz_defined-function locations,
+            611 strings with 4948 characters,
+and the built_in function-call counts, 1082 in all, are:
+= -- 86
+> -- 35
+< -- 4
++ -- 11
+- -- 9
+* -- 90
+:= -- 172
+add.period$ -- 3
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 78
+empty$ -- 90
+format.name$ -- 19
+if$ -- 213
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 15
+newline$ -- 11
+num.names$ -- 10
+pop$ -- 26
+preamble$ -- 1
+purify$ -- 11
+quote$ -- 0
+skip$ -- 33
+stack$ -- 0
+substring$ -- 54
+swap$ -- 37
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 0
+while$ -- 8
+width$ -- 0
+write$ -- 27

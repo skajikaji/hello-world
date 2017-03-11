@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section*.2}{List of Abbreviations}{}% 1
+\BOOKMARK [1][-]{section*.3}{List of Figures}{}% 2
+\BOOKMARK [1][-]{lstnumber.-2.12}{List of Tables}{}% 3
+\BOOKMARK [1][-]{section.1}{Introduction: Sharon, Soichi}{}% 4
+\BOOKMARK [1][-]{section.2}{Statistical Theory: Hyerin}{}% 5
+\BOOKMARK [1][-]{section.3}{Implementation}{}% 6
+\BOOKMARK [1][-]{section.4}{Empirical Study}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Data description: Soichi}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Regression Specification: Hyerin}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Regression Estimates}{section.4}% 10
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Fixed Effects: Soichi}{subsection.4.3}% 11
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Instrumental Variable: Hyerin}{subsection.4.3}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Robustness Tests: Sharon}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Conclusions}{}% 14
+\BOOKMARK [1][-]{section.5}{References}{}% 15
+\BOOKMARK [1][-]{appendix.A}{Source Code Listing}{}% 16
+\BOOKMARK [1][-]{appendix.B}{Figures}{}% 17
+\BOOKMARK [1][-]{appendix.C}{Tables}{}% 18

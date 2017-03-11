@@ -1,0 +1,78 @@
+\section{Implementation}\label{Sec:Implementation}
+
+Show the implementation. The goal of this section is to show and explain the most important parts of the code. Listing the code with highlighting and possibly line numbering is essential.
+Explain the code by referring to line numbers, function calls and variable names.
+Leave out trivial parts (initialization, parameter-tuning, etc...).
+\begin{itemize}
+	\item PLM
+	\item CLSE
+	\item Stargazer
+	\item Figure
+	
+	\begin{itemize}
+		\item F1
+	\end{itemize}
+	\\
+	\begin{lstlisting}
+	library(maptools)
+	
+	result=lm(fhpolrigaug~lrgdpch,data=ave1990s)
+	R2=signif(summary(result)$r.squared,digit=4)
+	R="R^2="
+	
+	plot(fhpolrigaug~lrgdpch,data=ave1990s,col="white",
+	ylab="Freedom House measure of democracy",xlab="Log GDP per pacita(Penn World Tables)",
+	sub=paste(R,R2))
+	pointLabel(x=ave1990s$lrgdpch,y=ave1990s$fhpolrigaug,labels=ave1990s$code,col="black")
+	
+	abline(result)
+	\end{lstlisting}
+	\\
+	\\
+	
+	In the paper, we insert figures to visualize the relationship between income and democracy. To
+	generate Figure 2, due to the fact that we are analyzing a panel dataset which involves around
+	150 country data, we cannot simply plot the data by the ”text” command because we cannot
+	distinguish each label in that way. Therefore, we introduce the ”maptools” package in order
+	to fix the location of each label automatically for them to be distinguishable. ”pointLabel” is
+	a command to function automatically adjustment of ”maptools” package. When we replace
+	pointLabel with text in line 10, we will be able to change the labels from dots to specific
+	country names.
+	\\
+	\\
+	
+	\begin{itemize}
+		\item F5
+	\end{itemize}
+	\\
+	\\
+	
+	\begin{lstlisting}
+x=1945
+for (i in 1:11) {
+x=x+5
+plot(fhpolrigaug~lrgdpch,data=X5yr_panel, subset=year==x,
+xlim=c(6,10),ylim=c(0,1),ann=F, xaxt="n",yaxt="n")  #setting for length of graph by xlim and ylim, and erase whole title and axis by ann=F
+text(6.3,0.95,x, cex=1.5)　　　　　#label setting for each graph
+if (i %in% c (8:11) ) { axis (1 , col = " black ", col.axis= " black ", at = seq (6 , 10 , 2) ) }
+if (i %in% c(1 , 5 , 9) ) { axis (2 , col = " black ", col.axis = " black ", at = seq (0 , 1 , 0.5) ) }
+result<-lm(formula=fhpolrigaug~lrgdpch, data=X5yr_panel, subset=year==x)
+abline(result, col="blue")
+box(col = "grey60")
+}
+	\end{lstlisting}
+	
+	\\
+	
+	\\
+	
+	Furthermore, Figure 3 shows the relationship between income and democracy based on the
+	data from different years. Since we should make 11 figures and avoid using the same command
+	11 times, we use a ”for” loop to iterate the command. In line 2, we introduce a variable ”x” to refer to the data from different years. Variable ”x” is added 5 for each repeat
+	and through this, x can be defined as the actual year where the data is from (i.e.the data
+	used here is collected every five years). Also, we add the ”if” command to add tick marks to
+	the 1st, 5th, and 9th graphs on the vertical axis and the 8th to 11th graphs on the horizontal
+	axis. Through this command, ”axis” command function in typical number of variable ”i”
+	which means number of iteration.
+	
+\end{itemize}

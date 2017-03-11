@@ -1,0 +1,18 @@
+\contentsline {section}{List of Abbreviations}{4}{section*.2}
+\contentsline {section}{List of Figures}{5}{section*.3}
+\contentsline {section}{List of Tables}{6}{section*.4}
+\contentsline {section}{\numberline {1}Introduction: Sharon, Soichi}{1}{section.1}
+\contentsline {section}{\numberline {2}Statistical Theory: Hyerin}{1}{section.2}
+\contentsline {section}{\numberline {3}Implementation}{2}{section.3}
+\contentsline {section}{\numberline {4}Empirical Study}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Data description: Soichi}{3}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Regression Specification: Hyerin}{3}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Regression Estimates}{4}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Fixed Effects: Soichi}{4}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Instrumental Variable: Hyerin}{5}{subsubsection.4.3.2}
+\contentsline {subsection}{\numberline {4.4}Robustness Tests: Sharon}{6}{subsection.4.4}
+\contentsline {section}{\numberline {5}Conclusions}{6}{section.5}
+\contentsline {section}{References}{8}{section.5}
+\contentsline {section}{\numberline {A}Source Code Listing}{9}{appendix.A}
+\contentsline {section}{\numberline {B}Figures}{17}{appendix.B}
+\contentsline {section}{\numberline {C}Tables}{18}{appendix.C}
